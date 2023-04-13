@@ -13,16 +13,24 @@ import { WishesModule } from './wishes/wishes.module';
 import { OffersModule } from './offers/offers.module';
 import { WishListListsModule } from './wishlistlists/wishlistlists.module';
 
+const {
+  POSTGRES_PASSWORD,
+  POSTGRES_DB,
+  POSTGRES_USER,
+  POSTGRES_HOST,
+  POSTGRES_PORT
+} = process.env;
+
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true, load: [configuration] }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'student',
-      password: 'student',
-      database: 'kupipodariday',
+      host: POSTGRES_HOST || 'database',
+      port: parseInt(POSTGRES_PORT, 10) || 5432,
+      username: POSTGRES_USER || 'student',
+      password: POSTGRES_PASSWORD || 'student',
+      database: POSTGRES_DB || 'kupipodariday',
       entities: [User, Wish, Offer, Wishlist],
       synchronize: true,
     }),
