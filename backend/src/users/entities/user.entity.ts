@@ -5,7 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn, OneToMany,
 } from 'typeorm';
-import { Length, IsUrl, IsEmail, IsNotEmpty } from 'class-validator';
+import {Length, IsUrl, IsEmail, IsNotEmpty, IsOptional} from 'class-validator';
 import { Wish } from '../../wishes/entities/wishes.entity';
 import { Offer } from '../../offers/entities/offer.entiti';
 import { Wishlist } from '../../wishlistlists/entities/wishlist.entiti';
@@ -38,7 +38,7 @@ export class User {
   @Length(2, 200)
   about: string;
 
-  @Column({
+  @IsOptional() @Column({
     //ссылка на аватар
     default: 'https://i.pravatar.cc/300',
   })

@@ -5,7 +5,7 @@ import { LocalGuard } from './guards/local.guard';
 import { CreateUserDto } from '../users/dto/create-user.dto';
 
 // реализуем контроллер для регистрации и входа по логину и паролю
-@Controller('auth')
+@Controller()
 export class AuthController {
   constructor(
     private usersService: UsersService,

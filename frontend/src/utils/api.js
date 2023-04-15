@@ -23,7 +23,7 @@ export const registerUser = (userData) => {
 };
 
 export const loginUser = (username, password) => {
-  return fetch(`${URL}/signin/`, {
+   return fetch(`${URL}/signin/`, {
     method: "POST",
     headers: headersWithContentType,
     body: JSON.stringify({ username, password }),
